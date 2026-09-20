@@ -1,10 +1,17 @@
 using UnityEngine;
 
-public class GameSettings : MonoBehaviour
+[CreateAssetMenu(fileName = "GameSettings", menuName = "Pong/Game Settings")]
+public class GameSettings : ScriptableObject
 {
-        public static float player1Speed = 0f;
-        public static float player2Speed = 0f;
-        public static float player1PaddleHeight = 2f;
-        public static float player2PaddleHeight = 2f;
+    [Header("Paddles")]
+    public float player1Speed = 3f;
+    public float player2Speed = 3f;
+    public float player1PaddleHeight = 1f;
+    public float player2PaddleHeight = 1f;
 
+    [Header("Reglas de partida")]
+    public int pointsToWin = 3;
+
+    [Header("Timer de gol")]
+    public float goalTimeLimit = 20f;
 }

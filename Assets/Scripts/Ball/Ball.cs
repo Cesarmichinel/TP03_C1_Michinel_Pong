@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-    [SerializeField] private float speed = 7f;
+    [SerializeField] private float initialSpeed = 7f;
     [SerializeField] private Rigidbody2D rb;
     private Vector2 startPos;
 
     void Start()
     {
-        transform.position = startPos;
+        startPos = transform.position;
         Launch();
     }
 
@@ -23,7 +23,9 @@ public class Ball : MonoBehaviour
     {
         float x = Random.Range(0, 2) == 0 ? -1 : 1;
         float y = Random.Range(0, 2) == 0 ? -1 : 1;
+        Vector2 direction = new Vector2(x, y).normalized;
 
-        rb.linearVelocity = new Vector2(speed * x, speed * y);
+        rb.linearVelocity = Vector2.zero;
+        rb.AddForce(direction * initialSpeed, ForceMode2D.Impulse);
     }
 }

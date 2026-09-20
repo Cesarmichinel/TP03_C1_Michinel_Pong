@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class SettingsSize : MonoBehaviour
 {
+    [SerializeField] private GameSettings gameSettings;
+
     [SerializeField] private Slider Sliderplayer1;
     [SerializeField] private Slider Sliderplayer2;
 
@@ -12,11 +14,11 @@ public class SettingsSize : MonoBehaviour
 
     void Start()
     {
-        Sliderplayer1.value = GameSettings.player1PaddleHeight;
-        Sliderplayer2.value = GameSettings.player2PaddleHeight;
+        Sliderplayer1.value = gameSettings.player1PaddleHeight;
+        Sliderplayer2.value = gameSettings.player2PaddleHeight;
 
-        Sizeplayer1text.text = GameSettings.player1PaddleHeight.ToString();
-        Sizeplayer2text.text = GameSettings.player2PaddleHeight.ToString();
+        Sizeplayer1text.text = gameSettings.player1PaddleHeight.ToString();
+        Sizeplayer2text.text = gameSettings.player2PaddleHeight.ToString();
 
         Sliderplayer1.onValueChanged.AddListener(ChangeSizePlayer1);
         Sliderplayer2.onValueChanged.AddListener(ChangeSizePlayer2);
@@ -24,13 +26,13 @@ public class SettingsSize : MonoBehaviour
 
     private void ChangeSizePlayer1(float newSize)
     {
-        GameSettings.player1PaddleHeight = newSize;
+        gameSettings.player1PaddleHeight = newSize;
         Sizeplayer1text.text = newSize.ToString();
     }
 
     private void ChangeSizePlayer2(float newSize)
     {
-        GameSettings.player2PaddleHeight = newSize;
+        gameSettings.player2PaddleHeight = newSize;
         Sizeplayer2text.text = newSize.ToString();
     }
 }
